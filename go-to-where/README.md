@@ -32,3 +32,23 @@ css样式中border:1px solid red;在2倍屏下,显示的并不是1个物理像�
  cnpm install fastclick --save
 import fastClick from 'fastclick'
 fastClick.attach(document.body);
+
+需要安装的包
+cnpm install stylus --save
+cnpm install stylus-loader --save
+
+1rem = html的font-size = 50px(设置reset.css里的html设置为50px)
+
+引入stylus变量时@符号前面要加~
+@import "~@/assets/styles/varibles.styl"
+
+设置路径别名build/webpack.base.conf.js
+注意：修改配置文件需要重新启动服务
+resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
+      'styles':resolve('src/assets/styles')
+    }
+  },
