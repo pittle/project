@@ -8,7 +8,12 @@ import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
 
+// 移动端某些机型上click 300ms点击延迟问题 需要导入一个js包
 import fastClick from 'fastclick'
+
+import axios from 'axios'
+
+Vue.prototype.$axios= axios
 
 Vue.config.productionTip = false
 

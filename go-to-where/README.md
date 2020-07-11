@@ -52,3 +52,15 @@ resolve: {
       'styles':resolve('src/assets/styles')
     }
   },
+
+本地创建分支push到远程
+git branch index-swiper
+git checkout index-swiper
+git push origin index-swiper
+远程创建分支拉到本地
+git pull
+git checkout index-swiper
+
+- 轮播图插件在git上搜索vue-awesome-swiper
+> https://github.com/surmon-china/vue-awesome-swiper
+cnpm install vue-awesome-swiper@2.6.7 --save
