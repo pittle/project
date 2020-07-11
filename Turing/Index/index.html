@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+   <div class="wrap">
+       <header>
+           聊天机器人
+       </header>
+       <section>
+            <div class="container">
+
+            </div>
+       </section>
+       <footer>
+           <input type="text" class="input" onkeydown="sendMsg(event)">
+           <button class="btn" onclick="sendMsg(event)">发送</button>
+       </footer>
+   </div>
+
+   <script>
+       function  ajax(callback,address) {
+           var xhr = null;
+           if(window.XMLHttpRequest){
+               xhr = new XMLHttpRequest();
+           }else{
+               xhr = new ActiveXObject('Microsoft.XMLHttp');
+           }
+           xhr.open('GET',address,true);
+           xhr.send();
+           xhr.onreadystatechange = function () {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        var result = JSON.parse(xhr.responseText);
+                        typeof callback == 'function' && callback(result.text,2);
+                    }
+                }
+           }
+       }
+       
+       function sendMsg(e){
+           var input = document.getElementsByClassName('input')[0];
+           var val = input.value;
+           if(!val){
+               return;
+           }
+           if (event instanceof KeyboardEvent && event.key != "Enter") {
+               return;
+           }
+           ajax(appendChat,"https://developer.duyiedu.com/edu/turing/chat?text=" + val);
+           appendChat(val,1);
+           input.value = '';
+       }
+       
+       function appendChat(msg,type) {
+           var chat = document.createElement("div");
+           var content = document.createElement("span");
+           var img = document.createElement("img");
+           content.innerHTML = msg;
+           if(type == 1){
+               img.src = "./han.jpg";
+               img.style.float = "right";
+               img.style.width = "35px";
+               img.style.height = "35px";
+               img.style.marginRight = "5px";
+               content.classList.add("myChat");
+           }else{
+               img.src = "./mi.jpg";
+               img.style.float = "left";
+               img.style.width = "35px";
+               img.style.height = "35px";
+               img.style.marginLeft = "5px";
+               content.classList.add("robotChat");
+           }
+           chat.appendChild(img);
+           chat.style.overflow = "hidden";
+           chat.style.marginTop = "15px";
+           chat.appendChild(content);
+           document.getElementsByClassName("container")[0].appendChild(chat);
+       }
+   </script>
+</body>
+</html>
