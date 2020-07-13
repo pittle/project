@@ -57,9 +57,21 @@ resolve: {
 git branch index-swiper
 git checkout index-swiper
 git push origin index-swiper
+
+/Desktop/git-practice/project/go-to-where (index-swiper)
+$ git add .
+git commit -m 'swiper'
+git push origin index-swiper  //push到远程index-swiper
+git checkout master           //切换到master分支 
+git merge origin/index-swiper //把线上的index-swiper合并到本地master分支
+git push  //push本地master到远程
+
+
 远程创建分支拉到本地
 git pull
 git checkout index-swiper
+
+
 
 - 轮播图插件在git上搜索vue-awesome-swiper
 > https://github.com/surmon-china/vue-awesome-swiper
