@@ -95,3 +95,6 @@ proxyTable: {
     }
 //此功能由webpack-dev-server提供
 ```
+
+- better-scroll插件
+import BScoll from 'better-scroll'
