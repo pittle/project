@@ -67,12 +67,31 @@ git merge origin/index-swiper //把线上的index-swiper合并到本地master分
 git push  //push本地master到到远程
 
 
-远程创建分支拉到本地
+- 远程创建分支拉到本地
 git pull
 git checkout index-swiper
-
-
 
 - 轮播图插件在git上搜索vue-awesome-swiper
 > https://github.com/surmon-china/vue-awesome-swiper
 cnpm install vue-awesome-swiper@2.6.7 --save
+
+- ajax
+浏览器自带fetch请求数据
+vue-resource
+axios(功能非常强大,vue推荐使用。浏览器上可以发送xhr请求,node服务器中发送http请求)
+
+- static目录下为静态文件,使用localhost:8080/static/mock/index.json可以在网页上直接访问到这个文件夹里面的内容,其他文件像src文件夹网页就访问不到
+
+
+- 配置config/index.js 
+```js
+proxyTable: {
+      '/api':{
+        target:'http://localhost:8080', //目标服务器地址
+        pathRewrite:{              //以api开头的访问路径替换成/static/mock
+          '^/api':'/static/mock'
+        }
+      }
+    }
+//此功能由webpack-dev-server提供
+```

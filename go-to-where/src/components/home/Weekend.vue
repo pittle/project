@@ -40,7 +40,6 @@ export default {
         line-height :.8rem
         background :#eee
         text-indent :.2rem
-        margin-top:5px
     .week-item
         overflow :hidden
         box-sizing :border-box
