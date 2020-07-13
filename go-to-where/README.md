@@ -79,6 +79,7 @@ cnpm install vue-awesome-swiper@2.6.7 --save
 浏览器自带fetch请求数据
 vue-resource
 axios(功能非常强大,vue推荐使用。浏览器上可以发送xhr请求,node服务器中发送http请求)
+- 注意：ajax的请求一般放到最外层的组件,这样只需要一次ajax就可以获得页面上所有内容
 
 - static目录下为静态文件,使用localhost:8080/static/mock/index.json可以在网页上直接访问到这个文件夹里面的内容,其他文件像src文件夹网页就访问不到
 
@@ -98,3 +99,8 @@ proxyTable: {
 
 - better-scroll插件
 import BScoll from 'better-scroll'
+
+- v-for循环对象的时候
+```js
+v-for="(item,key) in cities" :key="key" //key为对象属性名 item为属性名对应的属性值
+```
