@@ -1,7 +1,7 @@
 <template>
 
     <div class="icons" >
-        <div class="icon" v-for="icon in iconList" :key='icon'>
+        <div class="icon" v-for="icon in iconList" :key='icon[1]'>
              <div class="icon-img">
                 <img class="icon-img-con" :src="icon[0]" alt="">
              </div>
