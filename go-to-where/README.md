@@ -115,3 +115,5 @@ v-for="(item,key) in cities" :key="key" //key为对象属性名 item为属性名
 - City为父组件   Alphabet,List为子组件
 - Alphabet 传值给 City 再传值 给List
 
+- 
+

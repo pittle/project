@@ -31,7 +31,7 @@ export default {
             axios.get('/api/index.json').then(this.getHomeInfoSucc);
         },
         getHomeInfoSucc(res){
-            console.log(res);
+            // console.log(res);
         }
     },
     mounted(){

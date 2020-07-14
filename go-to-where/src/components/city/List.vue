@@ -6,14 +6,20 @@
                 <div class="title border-topbottom">当前位置</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">北京</div>
+                        <div class="button">
+                            {{ this.city }}
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="hot in hotCities" :key="hot.id">
+                    <div class="button-wrapper" 
+                    v-for="hot in hotCities" 
+                    :key="hot.id"
+                    @click="handleCityClick(hot.name)"
+                    >
                         <div class="button">{{ hot.name }}</div>
                     </div>
                 </div>
@@ -23,7 +29,11 @@
             :key="key"
             :ref='key'>
                 <div class="title border-topbottom">{{ key }}</div>
-                <div class="item-list" v-for="innerItem in item" :key="innerItem.name">
+                <div class="item-list" 
+                v-for="innerItem in item" 
+                :key="innerItem.name"
+                 @click="handleCityClick(innerItem.name)"
+                >
                     <div class="item border-bottom">{{ innerItem.name }}</div>
                 </div>
             </div>
@@ -34,12 +44,22 @@
 
 <script>
 import BScoll from 'better-scroll'
+import { mapState } from 'vuex'
 export default {
     name:'CityList',
     props:{
         hotCities:Array,
         cities:Object,
         letter:String
+    },
+    computed:{
+        ...mapState(['city'])
+    },
+    methods:{
+        handleCityClick(city){
+            this.$store.commit('changeCity',city);
+            this.$router.push('/');
+        }
     },
     mounted(){
         this.scroll = new BScoll(this.$refs.wrapper)
