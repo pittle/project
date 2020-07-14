@@ -20,7 +20,7 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-# 项目说明
+# 项目细节说明
 index.html 为首页模板文件
 
 assets/reset.css 设置初始化样式
@@ -99,8 +99,19 @@ proxyTable: {
 
 - better-scroll插件
 import BScoll from 'better-scroll'
-
+- 滚动元素到指定区域
+```js
+ mounted(){
+        this.scroll = new BScoll(this.$refs.wrapper)
+}
+this.scroll.scrollToElement(element); 
+```
 - v-for循环对象的时候
 ```js
 v-for="(item,key) in cities" :key="key" //key为对象属性名 item为属性名对应的属性值
 ```
+
+- 兄弟组件的传值Alphabet,List
+- City为父组件   Alphabet,List为子组件
+- Alphabet 传值给 City 再传值 给List
+
