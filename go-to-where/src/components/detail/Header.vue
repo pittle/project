@@ -70,6 +70,7 @@ export default {
             color:#fff
             font-weight bold
     .header-fix
+        z-index 2
         position fixed
         top 0
         left 0

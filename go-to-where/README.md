@@ -21,6 +21,10 @@ npm run build --report
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 # 项目细节说明
+
+### 笔记
+> https://blog.csdn.net/weixin_34245749/article/details/91381914
+> https://www.pianshen.com/article/170683541/
 index.html 为首页模板文件
 
 assets/reset.css 设置初始化样式
@@ -115,5 +119,9 @@ v-for="(item,key) in cities" :key="key" //key为对象属性名 item为属性名
 - City为父组件   Alphabet,List为子组件
 - Alphabet 传值给 City 再传值 给List
 
-- 
-
+- keep-alive  除了Detail组件,其他组件都有缓存
+```js
+<keep-alive exclude="Detail">
+      <router-view />
+</keep-alive>
+```
