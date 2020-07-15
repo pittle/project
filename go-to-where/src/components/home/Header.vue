@@ -22,6 +22,9 @@
 import { mapState } from 'vuex'
 export default {
     name:'HomeHeader',
+    data(){
+        return {}
+    },
     computed:{
         ...mapState(['city'])
     }

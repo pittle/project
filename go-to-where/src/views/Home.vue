@@ -43,13 +43,13 @@ export default {
     },
     mounted(){
         this.lastCity = this.city;
-        this.getHomeInfo();
+        // this.getHomeInfo();
     },
     activated(){
         //判断城市是否改变，如果改变就必须改变首页
         if(this.lastCity != this.city){
             this.lastCity = this.city;
-            this.getHomeInfo();
+            // this.getHomeInfo();
         }
     }
 }

@@ -5,7 +5,10 @@
             热销推荐
         </div>
         <ul>
-            <li class="recomment-item" v-for='recomment in recommentList' :key='recomment[1].title'>
+            <router-link :to="'/detail/' + recomment[2].id" 
+            tag='li' class="recomment-item" 
+            v-for='recomment in recommentList' 
+            :key='recomment[1].title'>
                 <div class="item-img-wrap">
                     <img :src="recomment[0]" alt="" class="item-img">
                 </div>
@@ -14,7 +17,7 @@
                     <p class="item-desc">{{ recomment[1].des }}</p>
                     <button class="item-button">查看详情</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 
@@ -26,10 +29,11 @@ export default {
     data(){
         return {
             recommentList:[
-                [require('@/assets/img/dec_1.jpg'),{title:'长隆水上乐园',des:'全球必去的水上乐园'}],
-                [require('@/assets/img/dec_2.jpg'),{title:'古龙峡玻璃大峡谷',des:'集合玻璃平台、栈道、索桥为的观光玻璃组合'}],
-                [require('@/assets/img/dec_3.jpg'),{title:'长隆野生动物世界',des:'奇妙的朋友与您共享欢乐时光'}],
-                [require('@/assets/img/dec_4.jpg'),{title:'古龙峡漂流',des:'广东漂流看清远，清远漂流看古龙'}]]
+                [require('@/assets/img/dec_1.jpg'),{title:'长隆水上乐园',des:'全球必去的水上乐园'},{id:'0001'}],
+                [require('@/assets/img/dec_2.jpg'),{title:'古龙峡玻璃大峡谷',des:'集合玻璃平台、栈道、索桥为的观光玻璃组合'},{id:'0002'}],
+                [require('@/assets/img/dec_3.jpg'),{title:'长隆野生动物世界',des:'奇妙的朋友与您共享欢乐时光'},{id:'0003'}],
+                [require('@/assets/img/dec_4.jpg'),{title:'古龙峡漂流',des:'广东漂流看清远，清远漂流看古龙'},{id:'0004'} ]
+            ],
         }
     }
 }
