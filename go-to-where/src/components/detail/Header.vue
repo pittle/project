@@ -44,7 +44,7 @@ export default {
             }
         }
     },
-    activated(){
+    activated(){     
         window.addEventListener('scroll',this.handleScroll);
     },
     deactivated(){
