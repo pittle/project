@@ -125,3 +125,85 @@ v-for="(item,key) in cities" :key="key" //key为对象属性名 item为属性名
       <router-view />
 </keep-alive>
 ```
+
+- fiddler charles抓包代理工具
+
+- 访问/api接口默认访问到http://localhost:80/api
+```js
+proxyTable: {
+      '/api':{
+        target:'http://localhost:80',
+}
+}
+```
+
+- ipconfig获取本机地址 用本机地址在浏览器上访问 192.168.0.157:8080
+- 访问不到，但是通过192.168.0.157:80访问php服务器却可以访问
+- 原因是前端项目是由webpack.dev.serve启动的(这个项目默认不支持ip的形式访问)
+- 如果想webpack.dev.serve通过ip在浏览器上访问必须在package.json中修改
+```
+"dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+改成
+"dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
+改好之后就可以在手机上访问了(同一局域网)
+```
+
+- 如果手机机型浏览器不支持promise等ES6新特性,需要下载第三方包
+- npm install babel-polyfill --save
+- main.js中加载这个包  import 'babel-polyfill'
+- 这个第三方包添加了一系列ES6新特性
+
+
+```js
+npm run build
+config/index.js
+build: {
+    // Template for index.html
+    index: path.resolve(__dirname, '../dist/index.html'),
+
+    // Paths
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    // assetsPublicPath: '/',
+    assetsPublicPath: '/project',//打包好后的dist下面的所有文件放到后端/project目录下
+
+dist目录下
+manifest.js 配置文件
+vendor.js   各页面公用组件
+app.js  所有页面的业务逻辑
+默认打包的时候 一进入首页 就加载app.js把所有页面的逻辑加载了
+- 解决办法：异步组件按需加载
+route/index.js按需加载
+routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: () => import('@/views/Home')
+    },{
+      path:'/city',
+      name:'City',
+      component:() => import('@/views/City')
+    },
+    {
+      path:'/detail/:id',
+      name:'Detail',
+      component:() => import('@/views/Detail')
+    }
+  ]
+
+
+HOME组件中按需加载
+export default {
+    name:'Home',
+    components:{
+        HomeHeader:import('@/components/home/Header.vue'),
+        HomeSwiper,
+        HomeIcons,
+        HomeRecomment,
+        HomeWeekend
+}
+
+- 上面的代码每次切换一个组件多会发送一次ajax 获得该组件的业务逻辑
+- 但是当app.js比较小的时候 发一次ajax的消耗远比首页一次性加载所有代码的代价大
+- app.js至少超过1MB才考虑使用异步组件
+```

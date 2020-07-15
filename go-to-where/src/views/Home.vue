@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import HomeHeader from '@/components/home/Header.vue'
+// import HomeHeader from '@/components/home/Header.vue'
 import HomeSwiper from '@/components/home/Swiper.vue'
 import HomeIcons from '@/components/home/Icons.vue'
 import HomeRecomment from '@/components/home/Recomment.vue'
@@ -21,7 +21,7 @@ import { mapState } from 'vuex'
 export default {
     name:'Home',
     components:{
-        HomeHeader,
+        HomeHeader:import('@/components/home/Header.vue'),
         HomeSwiper,
         HomeIcons,
         HomeRecomment,

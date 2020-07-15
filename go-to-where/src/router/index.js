@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
 import City from '@/views/City'
 import Detail from '@/views/Detail'
 import Demo from '@/views/Demo'
@@ -11,7 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: () => import('@/views/Home')
     },{
       path:'/city',
       name:'City',
